@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fischetti Landscaping - Green & Earth Tones Design System */
+
+/* Inter font family */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@layer base {
+  :root {
+    /* Warm cream background */
+    --background: 40 33% 97%;
+    --foreground: 30 20% 15%;
+
+    /* Cards with warm off-white */
+    --card: 40 40% 99%;
+    --card-foreground: 30 20% 15%;
+
+    --popover: 40 40% 99%;
+    --popover-foreground: 30 20% 15%;
+
+    /* Forest green primary */
+    --primary: 142 40% 32%;
+    --primary-foreground: 40 33% 97%;
+
+    /* Sage green secondary */
+    --secondary: 120 15% 85%;
+    --secondary-foreground: 142 40% 25%;
+
+    /* Muted sage tones */
+    --muted: 100 15% 92%;
+    --muted-foreground: 30 10% 45%;
+
+    /* Warm earth accent */
+    --accent: 28 40% 45%;
+    --accent-foreground: 40 33% 97%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 100 15% 85%;
+    --input: 100 15% 88%;
+    --ring: 142 40% 32%;
+
+    --radius: 0.5rem;
+
+    /* Custom landscaping colors */
+    --forest: 142 40% 32%;
+    --forest-light: 142 35% 45%;
+    --sage: 120 20% 75%;
+    --sage-light: 120 15% 90%;
+    --cream: 40 33% 97%;
+    --cream-dark: 40 25% 92%;
+    --earth: 28 40% 45%;
+    --earth-light: 28 35% 60%;
+    --bark: 25 30% 30%;
+
+    /* Sidebar defaults */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 30 20% 10%;
+    --foreground: 40 33% 97%;
+
+    --card: 30 20% 12%;
+    --card-foreground: 40 33% 97%;
+
+    --popover: 30 20% 12%;
+    --popover-foreground: 40 33% 97%;
+
+    --primary: 142 35% 45%;
+    --primary-foreground: 30 20% 10%;
+
+    --secondary: 120 15% 20%;
+    --secondary-foreground: 40 33% 97%;
+
+    --muted: 30 15% 18%;
+    --muted-foreground: 40 20% 65%;
+
+    --accent: 28 35% 55%;
+    --accent-foreground: 30 20% 10%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 30 15% 20%;
+    --input: 30 15% 20%;
+    --ring: 142 35% 45%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-sans {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-numbers {
+    font-family: 'Inter', sans-serif;
+  }
+}
