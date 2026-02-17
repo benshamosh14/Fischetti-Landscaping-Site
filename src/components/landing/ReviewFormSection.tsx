@@ -13,6 +13,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { CheckCircle, Star } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { reviewSchema } from "@/lib/validation";
 
 const serviceOptions = [
   "Landscape Design & Installation",
@@ -77,13 +78,24 @@ const ReviewFormSection = () => {
 
     setIsSubmitting(true);
 
-    const reviewData = {
-      name: formData.name.trim(),
+    const parsed = reviewSchema.safeParse({
+      name: formData.name,
       rating,
-      review_text: formData.review_text.trim(),
+      review_text: formData.review_text,
       service_type: formData.service_type,
-    };
+    });
 
+    if (!parsed.success) {
+      setIsSubmitting(false);
+      toast({
+        title: "Validation Error",
+        description: "Please check your inputs and try again.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const reviewData = parsed.data as { name: string; rating: number; review_text: string; service_type: string };
     const { error } = await supabase.from("reviews").insert(reviewData);
 
     if (error) {
