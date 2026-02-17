@@ -12,6 +12,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { CheckCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { leadSchema } from "@/lib/validation";
 
 const serviceOptions = [
   "Landscape Design & Installation",
@@ -81,16 +82,23 @@ const LeadFormSection = () => {
     }
 
     setIsSubmitting(true);
-    
-    const leadData = {
-      name: formData.name.trim(),
-      phone: formData.phone.trim(),
-      email: formData.email.trim(),
-      address: formData.address.trim(),
-      service: formData.service,
-      other_service: formData.service === "Other" ? otherServiceText.trim() : null
-    };
 
+    const parsed = leadSchema.safeParse({
+      ...formData,
+      other_service: formData.service === "Other" ? otherServiceText : null,
+    });
+
+    if (!parsed.success) {
+      setIsSubmitting(false);
+      toast({
+        title: "Validation Error",
+        description: "Please check your inputs and try again.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const leadData = parsed.data as { name: string; phone: string; email: string; address: string; service: string; other_service?: string | null };
     const { error } = await supabase.from("leads").insert(leadData);
 
     if (error) {
