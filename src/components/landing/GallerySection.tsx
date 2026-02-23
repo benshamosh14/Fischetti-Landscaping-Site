@@ -58,7 +58,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
         ) : (
           <img 
             src={project.image} 
-            alt={project.title}
+            alt={`${project.title} - ${project.description} by Anthony Fischetti Landscaping NJ`}
             loading={index < 3 ? "eager" : "lazy"}
             onLoad={() => setImageLoaded(true)}
             onError={() => setImageError(true)}
@@ -82,7 +82,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
 
 const GallerySection = () => {
   return (
-    <section className="py-16 md:py-24 bg-cream">
+    <section id="gallery" aria-label="Project gallery" className="py-16 md:py-24 bg-cream">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">
